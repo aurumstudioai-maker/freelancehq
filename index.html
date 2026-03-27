@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreelanceHQ â€“ The Â£12 Dashboard Freelancers Swear By</title>
+  <meta name="description" content="Stop losing clients, missing invoices and working in chaos. The FreelanceHQ dashboard organises your entire freelance business in one place â€” for just Â£12." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy: #0a1628; --blue: #1e40af; --accent: #f59e0b; --light: #f8fafc; --text: #1e293b; --muted: #64748b; --white: #ffffff; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; background: var(--navy); position: sticky; top: 0; z-index: 100; }
+    .logo { color: var(--white); font-size: 1.25rem; font-weight: 800; text-decoration: none; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta { background: var(--accent); color: var(--navy); padding: 0.5rem 1.25rem; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 0.9rem; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1e3a5f 100%); color: var(--white); text-align: center; padding: 5rem 2rem 6rem; }
+    .badge { display: inline-block; background: rgba(245,158,11,0.15); color: var(--accent); border: 1px solid rgba(245,158,11,0.3); border-radius: 100px; padding: 0.35rem 1rem; font-size: 0.8rem; font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 0.05em; text-transform: uppercase; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.15; max-width: 780px; margin: 0 auto 1.25rem; }
+    .hero h1 span { color: var(--accent); }
+    .hero p { font-size: 1.15rem; color: #94a3b8; max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: var(--accent); color: var(--navy); padding: 0.9rem 2rem; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 1rem; box-shadow: 0 4px 15px rgba(245,158,11,0.4); transition: transform 0.2s; }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-secondary { background: transparent; color: var(--white); padding: 0.9rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 1rem; border: 2px solid rgba(255,255,255,0.3); }
+    .hero-stats { display: flex; justify-content: center; gap: 3rem; margin-top: 4rem; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 900; color: var(--accent); }
+    .stat-label { font-size: 0.8rem; color: #94a3b8; margin-top: 0.25rem; }
+    .section { padding: 5rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-tag { display: inline-block; color: var(--blue); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+    .section-title { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 800; margin-bottom: 1rem; }
+    .section-sub { color: var(--muted); font-size: 1.05rem; line-height: 1.7; max-width: 600px; }
+    .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .problem-card { background: #fef2f2; border: 1px solid #fecaca; border-radius: 12px; padding: 1.5rem; }
+    .problem-card .icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+    .problem-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #991b1b; }
+    .problem-card p { font-size: 0.9rem; color: #7f1d1d; line-height: 1.6; }
+    .solution { background: var(--light); }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .feature-card { background: var(--white); border-radius: 16px; padding: 2rem; box-shadow: 0 2px 15px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; transition: transform 0.2s; }
+    .feature-card:hover { transform: translateY(-4px); }
+    .feature-icon { width: 52px; height: 52px; background: linear-gradient(135deg, var(--blue), #3b82f6); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.25rem; }
+    .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .feature-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.65; }
+    .pricing-box { background: linear-gradient(135deg, var(--navy), #1e3a5f); color: var(--white); border-radius: 24px; padding: 3.5rem 2rem; text-align: center; max-width: 520px; margin: 3rem auto 0; }
+    .price-label { color: #94a3b8; font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .price { font-size: 4rem; font-weight: 900; color: var(--accent); line-height: 1; }
+    .price-desc { color: #94a3b8; font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 2rem; }
+    .price-features { list-style: none; text-align: left; margin-bottom: 2rem; }
+    .price-features li { padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 0.95rem; display: flex; align-items: center; gap: 0.75rem; }
+    .price-features li::before { content: 'âœ“'; color: var(--accent); font-weight: 700; }
+    .guarantee { font-size: 0.8rem; color: #94a3b8; margin-top: 1rem; }
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .blog-card { border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0; transition: transform 0.2s; text-decoration: none; color: inherit; display: block; }
+    .blog-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+    .blog-thumb { background: linear-gradient(135deg, var(--navy), #1e40af); height: 160px; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+    .blog-body { padding: 1.5rem; }
+    .blog-tag { display: inline-block; background: #eff6ff; color: var(--blue); font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.75rem; border-radius: 100px; margin-bottom: 0.75rem; }
+    .blog-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.4; }
+    .blog-card p { color: var(--muted); font-size: 0.875rem; line-height: 1.6; }
+    .blog-meta { font-size: 0.8rem; color: #94a3b8; margin-top: 1rem; }
+    .testimonials { background: var(--navy); color: var(--white); }
+    .testimonials .section-title { color: var(--white); }
+    .testimonials .section-sub { color: #94a3b8; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .testimonial-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.75rem; }
+    .stars { color: var(--accent); font-size: 1rem; margin-bottom: 1rem; }
+    .testimonial-card p { color: #cbd5e1; font-size: 0.9rem; line-height: 1.7; margin-bottom: 1.25rem; }
+    .reviewer { display: flex; align-items: center; gap: 0.75rem; }
+    .reviewer-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--accent)); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; color: var(--white); }
+    .reviewer-name { font-weight: 600; font-size: 0.9rem; }
+    .reviewer-role { font-size: 0.8rem; color: #94a3b8; }
+    .cta-banner { background: linear-gradient(135deg, var(--accent), #f97316); text-align: center; padding: 5rem 2rem; }
+    .cta-banner h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 900; color: var(--navy); margin-bottom: 1rem; }
+    .cta-banner p { color: rgba(10,22,40,0.7); font-size: 1.05rem; margin-bottom: 2rem; }
+    .btn-dark { background: var(--navy); color: var(--white); padding: 1rem 2.5rem; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 1.05rem; display: inline-block; }
+    footer { background: var(--navy); color: #64748b; text-align: center; padding: 2rem; font-size: 0.85rem; }
+    footer a { color: #94a3b8; text-decoration: none; }
+    @media (max-width: 640px) { .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">Freelance<span>HQ</span></a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#blog">Blog</a></li>
+  </ul>
+  <a href="https://ko-fi.com/s/4e3dd32834" target="_blank" class="nav-cta">Get Dashboard Â£12</a>
+</nav>
+<section class="hero">
+  <div class="badge">ðŸ† The #1 Freelance Dashboard</div>
+  <h1>Stop Being a <span>Disorganised</span> Freelancer.<br/>Start Running a Real Business.</h1>
+  <p>Track invoices, clients, deadlines and income â€” all in one beautifully simple Â£12 dashboard. No subscriptions. No faff.</p>
+  <div class="hero-btns">
+    <a href="https://ko-fi.com/s/4e3dd32834" target="_blank" class="btn-primary">ðŸ‘‰ Get It for Â£12 â€” One-Time</a>
+    <a href="#features" class="btn-secondary">See What's Inside</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">Â£12</div><div class="stat-label">One-time. No subscription.</div></div>
+    <div class="stat"><div class="stat-num">4-in-1</div><div class="stat-label">Invoices, clients, deadlines & income</div></div>
+    <div class="stat"><div class="stat-num">Instant</div><div class="stat-label">Download & start today</div></div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <span class="section-tag">Sound familiar?</span>
+    <h2 class="section-title">The 3 Mistakes Keeping Freelancers Broke</h2>
+    <p class="section-sub">Most freelancers are talented â€” but disorganisation is silently costing them thousands every month.</p>
+    <div class="problems-grid">
+      <div class="problem-card"><div class="icon">ðŸ§¾</div><h3>Chasing unpaid invoices</h3><p>You send work, forget to follow up, and money slips through the cracks. Sound familiar?</p></div>
+      <div class="problem-card"><div class="icon">ðŸ˜°</div><h3>Missing deadlines</h3><p>Client projects pile up, nothing is tracked, and you're constantly stressed about what's due next.</p></div>
+      <div class="problem-card"><div class="icon">ðŸ“‰</div><h3>No idea what you're earning</h3><p>You work hard but have no clear view of your monthly income, expenses or profit margin.</p></div>
+    </div>
+  </div>
+</section>
+<section class="section solution" id="features">
+  <div class="container">
+    <span class="section-tag">The Solution</span>
+    <h2 class="section-title">Everything You Need in One Dashboard</h2>
+    <p class="section-sub">Built by a freelancer, for freelancers. Simple, powerful, and ready to use the moment you download it.</p>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-icon">ðŸ§¾</div><h3>Invoice Tracker</h3><p>Log every invoice, see what's paid, pending and overdue â€” at a glance. Never chase late payments blind again.</p></div>
+      <div class="feature-card"><div class="feature-icon">ðŸ‘¥</div><h3>Client Manager</h3><p>Keep all your client details, project notes and contact info in one organised place.</p></div>
+      <div class="feature-card"><div class="feature-icon">ðŸ“…</div><h3>Deadline Planner</h3><p>See every upcoming deadline clearly. Plan your week, avoid overcommitting and deliver on time.</p></div>
+      <div class="feature-card"><div class="feature-icon">ðŸ’°</div><h3>Income Overview</h3><p>Track monthly earnings, spot trends and understand exactly what's coming in. Finally know your numbers.</p></div>
+      <div class="feature-card"><div class="feature-icon">âš¡</div><h3>Instant Setup</h3><p>No app to install, no subscription to manage. Download once, use forever.</p></div>
+      <div class="feature-card"><div class="feature-icon">ðŸ”’</div><h3>Yours Forever</h3><p>One-time payment of just Â£12. No monthly fees, no paywalls, no surprises.</p></div>
+    </div>
+  </div>
+</section>
+<section class="section" id="pricing">
+  <div class="container" style="text-align:center;">
+    <span class="section-tag">Pricing</span>
+    <h2 class="section-title">Simple, Honest Pricing</h2>
+    <p class="section-sub" style="margin:0 auto;">No subscriptions. No upsells. Just one payment and you're set for life.</p>
+    <div class="pricing-box">
+      <p class="price-label">Complete Freelance Dashboard</p>
+      <div class="price">Â£12</div>
+      <p class="price-desc">One-time payment. Instant download.</p>
+      <ul class="price-features">
+        <li>Invoice Tracker</li>
+        <li>Client Manager</li>
+        <li>Deadline Planner</li>
+        <li>Monthly Income Overview</li>
+        <li>Lifetime access â€” no subscription</li>
+        <li>Free future updates</li>
+      </ul>
+      <a href="https://ko-fi.com/s/4e3dd32834" target="_blank" class="btn-primary" style="display:inline-block;width:100%;text-align:center;">Get Instant Access for Â£12 ðŸ‘‰</a>
+      <p class="guarantee">ðŸ’³ Secure checkout via Ko-fi</p>
+    </div>
+  </div>
+</section>
+<section class="section testimonials">
+  <div class="container">
+    <span class="section-tag" style="color:var(--accent);">Freelancers Love It</span>
+    <h2 class="section-title">Real Results from Real Freelancers</h2>
+    <p class="section-sub">Join freelancers who finally have their business under control.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card"><div class="stars">â˜…â˜…â˜…â˜…â˜…</div><p>"I used to lose track of invoices all the time. This dashboard changed everything â€” I spotted Â£400 in unpaid work within the first week."</p><div class="reviewer"><div class="reviewer-avatar">SJ</div><div><div class="reviewer-name">Sarah J.</div><div class="reviewer-role">Freelance Graphic Designer</div></div></div></div>
+      <div class="testimonial-card"><div class="stars">â˜…â˜…â˜…â˜…â˜…</div><p>"Worth every penny. I finally know exactly what I'm earning each month and which clients are most profitable. Game changer."</p><div class="reviewer"><div class="reviewer-avatar">MT</div><div><div class="reviewer-name">Marcus T.</div><div class="reviewer-role">Freelance Web Developer</div></div></div></div>
+      <div class="testimonial-card"><div class="stars">â˜…â˜…â˜…â˜…â˜…</div><p>"So simple but so powerful. I set it up in 10 minutes and I've used it every single day since. Best Â£12 I've ever spent."</p><div class="reviewer"><div class="reviewer-avatar">AK</div><div><div class="reviewer-name">Amy K.</div><div class="reviewer-role">Freelance Copywriter</div></div></div></div>
+    </div>
+  </div>
+</section>
+<section class="section" id="blog">
+  <div class="container">
+    <span class="section-tag">Freelance Tips</span>
+    <h2 class="section-title">The FreelanceHQ Blog</h2>
+    <p class="section-sub">Free tips, strategies and guides to help you earn more and stress less as a freelancer.</p>
+    <div class="blog-grid">
+      <a href="blog-1.html" class="blog-card"><div class="blog-thumb">ðŸš©</div><div class="blog-body"><span class="blog-tag">Productivity</span><h3>3 Signs You're a Disorganised Freelancer (And How to Fix It)</h3><p>These silent habits are costing freelancers thousands every month.</p><div class="blog-meta">March 27, 2026 Â· 4 min read</div></div></a>
+      <a href="blog-2.html" class="blog-card"><div class="blog-thumb">ðŸ’°</div><div class="blog-body"><span class="blog-tag">Income</span><h3>How Much Can You Actually Make as a Freelancer? My Real Numbers</h3><p>No fluff. No exaggeration. Here's exactly what I made last month.</p><div class="blog-meta">March 27, 2026 Â· 5 min read</div></div></a>
+      <a href="blog-3.html" class="blog-card"><div class="blog-thumb">ðŸ“‰</div><div class="blog-body"><span class="blog-tag">Mindset</span><h3>Why Most Freelancers Stay Broke (And the ONE Thing That Changes Everything)</h3><p>It's not about talent. Here's the real reason freelancers struggle.</p><div class="blog-meta">March 27, 2026 Â· 4 min read</div></div></a>
+    </div>
+  </div>
+</section>
+<section class="cta-banner">
+  <div class="container">
+    <h2>Ready to Run Your Freelance Business Like a Pro?</h2>
+    <p>Join freelancers who've taken control of their income, clients and deadlines â€” for just Â£12.</p>
+    <a href="https://ko-fi.com/s/4e3dd32834" target="_blank" class="btn-dark">Get the Dashboard â€” Â£12 One-Time ðŸ‘‰</a>
+  </div>
+</section>
+<footer>
+  <p>Â© 2026 FreelanceHQ Â· Built for freelancers, by freelancers Â· <a href="https://ko-fi.com/s/4e3dd32834" target="_blank">Get the Dashboard</a></p>
+</footer>
+</body>
+</html>
